@@ -1,12 +1,19 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { AuthModule, authRoutes } from '@ng-second/auth';
 
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
-  imports: [BrowserModule],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot([{ path: 'auth', children: authRoutes }], {
+      initialNavigation: 'enabledBlocking',
+    }),
+    AuthModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
